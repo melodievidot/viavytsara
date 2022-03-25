@@ -1,0 +1,34 @@
+{% extends 'users.html.twig' %}
+
+{% block title %}Profil de
+	{{ app.user.prenom}}
+	{{ app.user.nom }}
+{% endblock %}
+
+{% block body %}
+
+	<div class="grix xs2 container">
+		<div class="col-xs4">
+			<h1>Profil de
+				{{ app.user.prenom}}
+				{{app.user.nom }}</h1>
+		</div>
+		<div class="col-xs1">
+			Nom :
+			{{ app.user.nom }}</div>
+		<div class="col-xs1">Prénom:
+			{{ app.user.prenom}}</div>
+		<div class="col-xs1">Email:
+			{{ app.user.email }}</div>
+
+		<a href="#" class="btn btn-outline-primary">Modifier le profil</a>
+		<a href="#" class="btn btn-outline-primary">Modifier le mot de passe</a>
+
+
+<div class="col-xs4">
+			<h1>Réservations de {{ app.user.prenom }} {{ app.user.nom }} </h1>
+
+	</div>
+
+
+{% endblock %}
