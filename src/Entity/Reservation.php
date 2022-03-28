@@ -55,6 +55,12 @@ class Reservation
      */
     private $horaire;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Calendrier::class, inversedBy="reservations")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $calendrier;
+
     public function __construct()
     {
         $this->soin = new ArrayCollection();
@@ -164,6 +170,18 @@ class Reservation
     public function setHoraire(\DateTimeInterface $horaire): self
     {
         $this->horaire = $horaire;
+
+        return $this;
+    }
+
+    public function getCalendrier(): ?Calendrier
+    {
+        return $this->calendrier;
+    }
+
+    public function setCalendrier(?Calendrier $calendrier): self
+    {
+        $this->calendrier = $calendrier;
 
         return $this;
     }
