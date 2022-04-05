@@ -44,9 +44,15 @@ class Categorie
      */
     private $soin;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Reservation::class, mappedBy="categorie")
+     */
+    private $reservations;
+
     public function __construct()
     {
         $this->soin = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     public function __toString()
@@ -132,6 +138,33 @@ class Categorie
             if ($soin->getCategorie() === $this) {
                 $soin->setCategorie(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Reservation[]
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations[] = $reservation;
+            $reservation->addCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            $reservation->removeCategorie($this);
         }
 
         return $this;

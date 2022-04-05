@@ -36,12 +36,6 @@ class Soin
     private $avis;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Reservation::class, mappedBy="soin")
-     */
-    private $reservations;
-
-
-    /**
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="soin")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -115,33 +109,6 @@ class Soin
             if ($avi->getSoin() === $this) {
                 $avi->setSoin(null);
             }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Reservation[]
-     */
-    public function getReservations(): Collection
-    {
-        return $this->reservations;
-    }
-
-    public function addReservation(Reservation $reservation): self
-    {
-        if (!$this->reservations->contains($reservation)) {
-            $this->reservations[] = $reservation;
-            $reservation->addSoin($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReservation(Reservation $reservation): self
-    {
-        if ($this->reservations->removeElement($reservation)) {
-            $reservation->removeSoin($this);
         }
 
         return $this;

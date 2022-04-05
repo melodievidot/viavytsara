@@ -15,7 +15,7 @@ class CategorieType extends AbstractType
         $builder
             ->add('Titre')
             ->add('Description')
-            ->add('Image', FileType::class, ['label'=>'Telecharger une image'])
+            ->add('Image')
             ->add('Image_alt')
         ;
     }

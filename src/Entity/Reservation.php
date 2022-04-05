@@ -46,11 +46,6 @@ class Reservation
     private $adresse;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Soin::class, inversedBy="reservations")
-     */
-    private $soin;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private $horaire;
@@ -61,9 +56,15 @@ class Reservation
      */
     private $calendrier;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Categorie::class, inversedBy="reservations")
+     */
+    private $categorie;
+
     public function __construct()
     {
         $this->soin = new ArrayCollection();
+        $this->categorie = new ArrayCollection();
     }
 
     public function __toString()
@@ -146,22 +147,6 @@ class Reservation
         return $this;
     }
 
-    public function addSoin(Soin $soin): self
-    {
-        if (!$this->soin->contains($soin)) {
-            $this->soin[] = $soin;
-        }
-
-        return $this;
-    }
-
-    public function removeSoin(Soin $soin): self
-    {
-        $this->soin->removeElement($soin);
-
-        return $this;
-    }
-
     public function getHoraire(): ?\DateTimeInterface
     {
         return $this->horaire;
@@ -182,6 +167,30 @@ class Reservation
     public function setCalendrier(?Calendrier $calendrier): self
     {
         $this->calendrier = $calendrier;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Categorie[]
+     */
+    public function getCategorie(): Collection
+    {
+        return $this->categorie;
+    }
+
+    public function addCategorie(Categorie $categorie): self
+    {
+        if (!$this->categorie->contains($categorie)) {
+            $this->categorie[] = $categorie;
+        }
+
+        return $this;
+    }
+
+    public function removeCategorie(Categorie $categorie): self
+    {
+        $this->categorie->removeElement($categorie);
 
         return $this;
     }
