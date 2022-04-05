@@ -31,7 +31,7 @@ class Adresse
     private $adresse2;
 
     /**
-     * @ORM\ManyToOne(targetEntity=users::class, inversedBy="adresses")
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="adresses")
      */
     private $user;
 

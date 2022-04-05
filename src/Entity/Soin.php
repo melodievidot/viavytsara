@@ -50,6 +50,24 @@ class Soin
      */
     private $reservations;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image_alt;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lien;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="soin")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categorie;
+
+
+
     public function __construct()
     {
         $this->avis = new ArrayCollection();
@@ -172,4 +190,39 @@ class Soin
         return $this;
     }
 
+    public function getImageAlt(): ?string
+    {
+        return $this->image_alt;
+    }
+
+    public function setImageAlt(?string $image_alt): self
+    {
+        $this->image_alt = $image_alt;
+
+        return $this;
+    }
+
+    public function getLien(): ?string
+    {
+        return $this->lien;
+    }
+
+    public function setLien(string $lien): self
+    {
+        $this->lien = $lien;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
 }

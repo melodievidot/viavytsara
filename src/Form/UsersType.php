@@ -2,31 +2,30 @@
 
 namespace App\Form;
 
-use App\Entity\Soin;
+use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SoinType extends AbstractType
+class UsersType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Titre')
-            ->add('prix')
-            ->add('description')
-            ->add('image')
-            ->add('image_alt')
-            ->add('lien')
-            ->add('reservations')
-            ->add('categorie')
+            ->add('email')
+            ->add('roles')
+            ->add('password')
+            ->add('isVerified')
+            ->add('nom')
+            ->add('prenom')
+            ->add('telephone')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Soin::class,
+            'data_class' => Users::class,
         ]);
     }
 }

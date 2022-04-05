@@ -1,22 +1,26 @@
 <header>
 
-   <nav class="navbar navbar-expand navbar-dark bg-dark container-fluid justify-content-end">
-                    {% if app.user %}>
+	<nav class="navbar navbar-expand navbar-dark bg-dark container-fluid justify-content-end">
+		{% if app.user %}>
 
-                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">{{ app.user.nom }}</a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item dropdown-logout" href="{{ path('app_logout') }}">Se déconnecter</a></li>  
-            {% else %}
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{path('app_login')}}"><i class="far fa-user"></i> Se connecter</a>
-                </li>
-            </ul>
-	
-        {% endif %}
+			<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">{{ app.user.nom }}</a>
+			<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+				<li>
+					<a class="dropdown-item dropdown-logout" href="{{ path('app_logout') }}">Se déconnecter</a>
+				</li>
+			{% else %}
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="{{path('app_login')}}">
+							<i class="far fa-user"></i>
+							Se connecter</a>
+					</li>
+				</ul>
 
- </div>
-</nav>
+			{% endif %}
+
+		</div>
+	</nav>
 	<nav class="navbar navbar-expand-lg navbar-light bg-white">
 		<div class="container-fluid">
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,12 +28,56 @@
 			</button>
 			<div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
 				<ul class="navbar-nav mb-2 mb-lg-0">
-				{% if app.user %}
-          <li class="nav-item1">
-						    <a class="nav-link active text-dark" aria-current="page" href="#">Mon compte</a>
+					{% if app.user %}
+						<li class="nav-item1">
+							<a class="nav-link active text-dark" aria-current="page" href="#">Mon compte</a>
+						</li>
+						<li class="nav-item2">
+							<a class="nav-link active text-dark" aria-current="page" href="#">Mes réservations</a>
+						</li>
+						<li class="nav-item3">
+							<a class="nav-link text-dark" href="#">À propos de nous</a>
+						</li>
+						<li class="nav-item4">
+							<a class="nav-link text-dark" href="#">Contactez nous</a>
+						</li>
+					</ul>
+					{#
+																			<form class="d-flex">
+																				<input class="form-control" type="search" placeholder="Rechercher..." aria-label="Search">
+																				<button class="btn btn-outline-success" type="submit">
+																					<i class="fa fa-search"></i>
+																				</button>
+																			</form>#}
+				{% else %}
+
+					<li class="nav-item1 dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							🌸𝙇𝙀𝙎 𝙋𝙍𝙀𝙎𝙏𝘼𝙏𝙄𝙊𝙉𝙎
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<li>
+								<a class="dropdown-item" href="#">Epilation</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">Soins visage & Soins corps</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">Beauté du regard</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">Blanchiment dentaire</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">Beauté des mains et Beautés des pieds></a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">Faux ongles</a>
+							</li>
+						</ul>
 					</li>
-          <li class="nav-item2">
-						    <a class="nav-link active text-dark" aria-current="page" href="#">Mes réservations</a>
+					<li class="nav-item2">
+						<a class="nav-link active text-dark" aria-current="page" href="{{ path('app_register')}}"><i class="far fa-user"></i>Créer un compte</a>
 					</li>
 					<li class="nav-item3">
 						<a class="nav-link text-dark" href="#">À propos de nous</a>
@@ -37,34 +85,31 @@
 					<li class="nav-item4">
 						<a class="nav-link text-dark" href="#">Contactez nous</a>
 					</li>
-				</ul>{#
-				<form class="d-flex">
-					<input class="form-control" type="search" placeholder="Rechercher..." aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">
-						<i class="fa fa-search"></i>
-					</button>
-				</form>#}
-                {% else %}
-                    <li class="nav-item1">
-						<a class="nav-link active text-dark" aria-current="page" href="#">Créer un compte</a>
-					</li>
-					<li class="nav-item2">
-						<a class="nav-link text-dark" href="#">À propos de nous</a>
-					</li>
-					<li class="nav-item2">
-						<a class="nav-link text-dark" href="#">Contactez nous</a>
-					</li>
-				</ul>{#
-				<form class="d-flex">
-					<input class="form-control" type="search" placeholder="Rechercher..." aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">
-						<i class="fa fa-search"></i>
-					</button>
-				</form>#}
-                {% endif %}
+
+				</li>
+			</ul>
+			{#
+															<form class="d-flex">
+																<input class="form-control" type="search" placeholder="Rechercher..." aria-label="Search">
+																<button class="btn btn-outline-success" type="submit">
+																	<i class="fa fa-search"></i>
+																</button>
+															</form>#}
+		{% endif %}
+	</div>
+
+</div></nav>{% if is_granted('ROLE_ADMIN') %}
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffa806;">
+	<div class="container-fluid">
+		<a class="navbar-brand text-danger" href="#">⚠️ Menu Administrateur ⚠️</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<a class="nav-link" href="{{path('calendrier_index')}}">⚙️ Calendrier</a>
 			</div>
+			<a class="nav-link" href="{{path('categorie_index')}}">⚙️ Categorie</a>
 		</div>
-	</nav>
-
-
-</header>
+	</div>
+</nav>{% endif %}</header>

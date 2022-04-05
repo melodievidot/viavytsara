@@ -8,8 +8,13 @@ use App\Repository\ReservationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-
+/**
+ * @Route("/admin/calendar")
+ */
 class CalendarController extends AbstractController
+/**
+ * @Route ("/admin")
+ */
 {
     /**
      * @Route("/calendar", name="calendar")
@@ -24,7 +29,6 @@ class CalendarController extends AbstractController
             $rdvs[] = [
                 'id' => $event->getId(),
                 'start' => $event->getStart()->format('Y-m-d H:i:s'),
-                'end' => $event->getEnd()->format('Y-m-d H:i:s'),
                 'title' => $event->getTitle(),
                 'commentaire' => $event->getCommentaire(),
             ];

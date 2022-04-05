@@ -1,28 +1,47 @@
-{% extends 'users.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}Profil de
-	{{ app.user.prenom}}
-	{{ app.user.nom }}
-{% endblock %}
+{% block title %}Users index{% endblock %}
 
 {% block body %}
+    <h1>Users index</h1>
 
-	<div class="grix xs2 container">
-		<div class="col-xs4">
-			<h1>Profil de
-				{{ app.user.prenom}}
-				{{app.user.nom }}</h1>
-		</div>
-		<div class="col-xs1">
-			Nom :
-			{{ app.user.nom }}</div>
-		<div class="col-xs1">Prénom:
-			{{ app.user.prenom}}</div>
-		<div class="col-xs1">Email:
-			{{ app.user.email }}</div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>IsVerified</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Telephone</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.telephone }}</td>
+                <td>
+                    <a href="{{ path('users_show', {'id': user.id}) }}">show</a>
+                    <a href="{{ path('users_edit', {'id': user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-		<a href="#" class="btn btn-outline-primary">Modifier le profil</a>
-		<a href="#" class="btn btn-outline-primary">Modifier le mot de passe</a>
-
-
+    <a href="{{ path('users_new') }}">Create new</a>
 {% endblock %}

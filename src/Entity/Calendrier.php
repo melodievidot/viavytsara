@@ -30,11 +30,6 @@ class Calendrier
     private $start;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    private $end;
-
-    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $commentaire;
@@ -77,19 +72,7 @@ class Calendrier
 
         return $this;
     }
-
-    public function getEnd(): ?\DateTimeInterface
-    {
-        return $this->end;
-    }
-
-    public function setEnd(\DateTimeInterface $end): self
-    {
-        $this->end = $end;
-
-        return $this;
-    }
-
+    
     public function getCommentaire(): ?string
     {
         return $this->commentaire;

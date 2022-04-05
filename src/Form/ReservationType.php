@@ -2,31 +2,31 @@
 
 namespace App\Form;
 
-use App\Entity\Soin;
+use App\Entity\Reservation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SoinType extends AbstractType
+class ReservationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Titre')
-            ->add('prix')
-            ->add('description')
-            ->add('image')
-            ->add('image_alt')
-            ->add('lien')
-            ->add('reservations')
-            ->add('categorie')
+            ->add('quantite')
+            ->add('date_de_reservation')
+            ->add('date_de_paiement')
+            ->add('commentaire')
+            ->add('horaire')
+            ->add('adresse')
+            ->add('soin')
+            ->add('calendrier')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Soin::class,
+            'data_class' => Reservation::class,
         ]);
     }
 }

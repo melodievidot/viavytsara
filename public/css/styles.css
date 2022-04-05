@@ -1,3 +1,18 @@
+/***************/
+/***  HTML   ***/
+/***************/
+
+html {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 5em;
+    background-image: url("../image/background/beaute12.jpg");
+}
+
 footer {
     position: absolute;
     bottom: 0px;
@@ -6,4 +21,3 @@ footer {
     margin-top: 2em;
     margin-bottom: 0px;
 }
-

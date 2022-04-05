@@ -16,8 +16,7 @@ class CalendrierType extends AbstractType
             ->add('title')
             ->add('start', DatetimeType::class, [
                 'date_widget' => 'single_text'
-            ]) 
-            ->add('end')
+            ])
             ->add('commentaire')
         ;
     }
