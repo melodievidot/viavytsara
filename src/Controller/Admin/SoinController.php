@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Soin;
 use App\Form\Soin1Type;
@@ -12,12 +12,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/soin")
+ * @Route("/admin/soin")
  */
 class SoinController extends AbstractController
+
+/**
+ * @Route ("/admin")
+ */
+
 {
     /**
-     * @Route("/", name="soin_index", methods={"GET"})
+     * @Route("/liste-soin", name="soin_index", methods={"GET"})
      */
     public function index(SoinRepository $soinRepository): Response
     {
@@ -27,7 +32,7 @@ class SoinController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="soin_new", methods={"GET", "POST"})
+     * @Route("/ajouter-soin", name="soin_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -49,7 +54,7 @@ class SoinController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="soin_show", methods={"GET"})
+     * @Route("/soin/{id}", name="soin_show", methods={"GET"})
      */
     public function show(Soin $soin): Response
     {
@@ -59,7 +64,7 @@ class SoinController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="soin_edit", methods={"GET", "POST"})
+     * @Route("/soin/{id}/modifier", name="soin_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Soin $soin, EntityManagerInterface $entityManager): Response
     {
@@ -79,7 +84,7 @@ class SoinController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="soin_delete", methods={"POST"})
+     * @Route("/soin/{id}", name="soin_delete", methods={"POST"})
      */
     public function delete(Request $request, Soin $soin, EntityManagerInterface $entityManager): Response
     {

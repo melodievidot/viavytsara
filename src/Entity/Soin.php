@@ -31,16 +31,6 @@ class Soin
     private $prix;
 
     /**
-     * @ORM\Column(type="text")
-     */
-    private $description;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $image;
-
-    /**
      * @ORM\OneToMany(targetEntity=Avis::class, mappedBy="soin")
      */
     private $avis;
@@ -50,15 +40,6 @@ class Soin
      */
     private $reservations;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $image_alt;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $lien;
 
     /**
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="soin")
@@ -105,30 +86,6 @@ class Soin
     public function setPrix(float $prix): self
     {
         $this->prix = $prix;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(string $image): self
-    {
-        $this->image = $image;
 
         return $this;
     }
@@ -198,18 +155,6 @@ class Soin
     public function setImageAlt(?string $image_alt): self
     {
         $this->image_alt = $image_alt;
-
-        return $this;
-    }
-
-    public function getLien(): ?string
-    {
-        return $this->lien;
-    }
-
-    public function setLien(string $lien): self
-    {
-        $this->lien = $lien;
 
         return $this;
     }

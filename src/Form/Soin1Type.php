@@ -6,19 +6,15 @@ use App\Entity\Soin;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
-class SoinType extends AbstractType
+class Soin1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('Titre')
             ->add('prix')
-            ->add('description')
-            ->add('image')
-            ->add('image_alt')
-            ->add('lien')
-            ->add('reservations')
             ->add('categorie')
         ;
     }

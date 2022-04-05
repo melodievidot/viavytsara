@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Calendrier;
 use App\Form\CalendrierType;
@@ -12,12 +12,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/calendrier")
+ * @Route("/admin/calendrier")
  */
 class CalendrierController extends AbstractController
+
+/**
+ * @Route ("/admin")
+ */
 {
     /**
-     * @Route("/", name="calendrier_index", methods={"GET"})
+     * @Route("/liste-calendrier", name="calendrier_index", methods={"GET"})
      */
     public function index(CalendrierRepository $calendrierRepository): Response
     {
@@ -27,7 +31,7 @@ class CalendrierController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="calendrier_new", methods={"GET", "POST"})
+     * @Route("/ajouter-calendrier", name="calendrier_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -49,7 +53,7 @@ class CalendrierController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="calendrier_show", methods={"GET"})
+     * @Route("/calendrier/{id}", name="calendrier_show", methods={"GET"})
      */
     public function show(Calendrier $calendrier): Response
     {
@@ -59,7 +63,7 @@ class CalendrierController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="calendrier_edit", methods={"GET", "POST"})
+     * @Route("/calendrier/{id}/modifier", name="calendrier_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Calendrier $calendrier, EntityManagerInterface $entityManager): Response
     {
@@ -79,7 +83,7 @@ class CalendrierController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="calendrier_delete", methods={"POST"})
+     * @Route("/calendrier/{id}", name="calendrier_delete", methods={"POST"})
      */
     public function delete(Request $request, Calendrier $calendrier, EntityManagerInterface $entityManager): Response
     {

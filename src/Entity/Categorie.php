@@ -49,6 +49,11 @@ class Categorie
         $this->soin = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->Titre;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -1,9 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Soin index{% endblock %}
+{% block title %}Liste Soin {% endblock %}
+
+{% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/nuage.css") }}">
+{% endblock %}
 
 {% block body %}
-    <h1>Soin index</h1>
+     <h1 class="my-5 text-center">Liste Soin</h1>
+
 
     <table class="table">
         <thead>
@@ -11,10 +17,6 @@
                 <th>Id</th>
                 <th>Titre</th>
                 <th>Prix</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Image_alt</th>
-                <th>Lien</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -24,10 +26,6 @@
                 <td>{{ soin.id }}</td>
                 <td>{{ soin.Titre }}</td>
                 <td>{{ soin.prix }}</td>
-                <td>{{ soin.description }}</td>
-                <td>{{ soin.image }}</td>
-                <td>{{ soin.imageAlt }}</td>
-                <td>{{ soin.lien }}</td>
                 <td>
                     <a href="{{ path('soin_show', {'id': soin.id}) }}">show</a>
                     <a href="{{ path('soin_edit', {'id': soin.id}) }}">edit</a>

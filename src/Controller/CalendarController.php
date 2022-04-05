@@ -7,14 +7,8 @@ use App\Repository\CalendrierRepository;
 use App\Repository\ReservationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-
-/**
- * @Route("/admin/calendar")
- */
 class CalendarController extends AbstractController
-/**
- * @Route ("/admin")
- */
+
 {
     /**
      * @Route("/calendar", name="calendar")
