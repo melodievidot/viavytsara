@@ -5,30 +5,24 @@
 
 {% block body %}
 
-	<main>
-		<div class="container mt-5">
-			<div class="mt-3 pt-2">
-				<h1 class="d-flex justify-content-center">
-					Prestations
-				</h1>
-			</div>
-			<div class="row mt-5 g-4 g-lg-5">
-				{% for categorie in categories %}
-					<div class="col-12 col-sm-4 p-3">
-						<div class="card h-100" style="width: 100%;">
-							<img src="{{ asset(categorie.image)}}" class="card-img-top" alt="{{ categorie.ImageAlt }}">
-                    <div class="card-body">
-                    <p class="card-text">{{ categorie.description }}</p>
-                    <a href="{{ path('categorie_page',{'id':categorie.id}) }}" class="btn btn-primary d-flex justify-content-center">{{ categorie.titre }}</a>
-            </div>
-            </div>
-					</div>
-				{% endfor %}
-			</div>
+	<div class="container mt-5">
+		<div class="mt-3 pt-2">
+			<h1 class="d-flex justify-content-center">Prestations :
+			</h1>
+
 		</div>
-</main>
-{% endblock %}
-{% endblock %}
+		<img src="{{ asset(categorie.image)}}" class="card-img-top" alt="{{ categorie.ImageAlt }}">
+		{% for soin in soins %}
+		
+			<div class="elementor-price-list-header">
+				<span class="elementor-price-list-title">
+					{{soin.titre}}
+				</span>
+				<span class="elementor-price-list-separator"></span>
+				<span class="elementor-price-list-price">
+					{{soin.prix}}€</span>
+			</div>
 
+		{% endfor %}
 
-
+	{% endblock %}

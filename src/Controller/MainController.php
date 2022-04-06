@@ -38,26 +38,20 @@ class MainController extends AbstractController
         return $this->render('pages/aproposdenous.html.twig');
     }
 
-  /**
-     * @Route("/soin/{id}", name="prestations_page")
-     */
-    public function PrestationsPage(): Response
-    {
-        return $this->render('pages/prestations.html.twig');
-    }
-    
+
     /**
      * @Route("/categorie/{id}", name="categorie_page")
      */
-    public function CategoriePage(Categorie $categorie, CategorieRepository $categorieRepository): Response
+    public function PrestationsPage(Categorie $categorie, soinRepository $soinRepository): Response
     {
-        return $this->render('pages/categorie/categorie.html.twig', [
+        return $this->render('pages/prestations.html.twig', [
             'categorie' => $categorie,
-            'categorie' => $categorieRepository->findBy([
-                'titre' => $categorie
+            'soins' => $soinRepository->findBy([
+                'categorie' => $categorie
             ]),
         ]);
     }
+
     /**
      * @Route("/moncompte", name="moncompte")
      */
@@ -116,6 +110,14 @@ class MainController extends AbstractController
     public function mentionscgu(): Response
     {
         return $this->render('pages/cgu.html.twig');
+    }
+
+    /**
+     * @Route("/categorie/{id}", name="prestation")
+     */
+    public function Prestations(): Response
+    {
+        return $this->render('pages/prestations.html.twig');
     }
 
     /**

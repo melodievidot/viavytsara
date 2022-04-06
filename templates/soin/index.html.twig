@@ -25,6 +25,7 @@
             <tr>
                 <td>{{ soin.id }}</td>
                 <td>{{ soin.Titre }}</td>
+                <td>{{ soin.categorie.Titre }}</td>
                 <td>{{ soin.prix }}</td>
                 <td>
                     <a href="{{ path('soin_show', {'id': soin.id}) }}">show</a>
