@@ -3,13 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Categorie;
-use App\Entity\Soin;
 use App\Entity\Reservation;
+use App\Entity\Adresse;
+use App\Entity\Soin;
 use App\Entity\Users;
 use App\Form\EditProfileType;
 use App\Repository\CategorieRepository;
-use App\Repository\SoinRepository;
 use App\Repository\ReservationRepository;
+use App\Repository\AdresseRepository;
+use App\Repository\SoinRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,6 +40,13 @@ class MainController extends AbstractController
         return $this->render('pages/aproposdenous.html.twig');
     }
 
+    /**
+     * @Route("/reservation", name="mesreservations")
+     */
+    public function reservation(): Response
+    {
+        return $this->render('pages/mesreservations.html.twig');
+    }
 
     /**
      * @Route("/categorie/{id}", name="categorie_page")
@@ -65,6 +74,7 @@ class MainController extends AbstractController
             'reservations' => $reservationRepository->find($user),
         ]);
     }
+
 
     /**
      * @Route("/moncompte/modifier", name="modifiermoncompte")
@@ -94,7 +104,7 @@ class MainController extends AbstractController
     }
 
 
-    /**
+/**
      * @Route("/soin/{id}", name="soin_page")
      */
     public function soinPage(Categorie $categorie, Soin $soin): Response
@@ -112,7 +122,7 @@ class MainController extends AbstractController
         return $this->render('pages/cgu.html.twig');
     }
 
-    /**
+/**
      * @Route("/categorie/{id}", name="prestation")
      */
     public function Prestations(): Response
@@ -145,7 +155,7 @@ class MainController extends AbstractController
         return $this->render('pages/modifiermotdepasse.html.twig');
     }
 
-    /**
+/**
      * @Route("/politiquedeconfidentialite", name="conf")
      */
     public function conf(): Response

@@ -3,9 +3,13 @@
 {% block title %}New Reservation{% endblock %}
 
 {% block body %}
-    <h1>Create new Reservation</h1>
+
+ <div class="container mt-5 mt-lg-5">
+    
+<h3> Merci de compléter les étapes ci-dessous pour prendre rendez-vous!</h1>
 
     {{ include('reservation/_form.html.twig') }}
 
     <a href="{{ path('reservation_index') }}">back to list</a>
+    
 {% endblock %}

@@ -2,28 +2,27 @@
 
 namespace App\Form;
 
-use App\Entity\Soin;
+use App\Entity\Adresse;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 
-class Soin1Type extends AbstractType
+class AdresseType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Titre')
-            ->add('prix')
-            ->add('temps')
-            ->add('categorie')
+            ->add('Adresse1')
+            ->add('adresse2')
+            ->add('reservation')
+            ->add('user')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Soin::class,
+            'data_class' => Adresse::class,
         ]);
     }
 }

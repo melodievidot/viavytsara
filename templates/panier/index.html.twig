@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Panier{% endblock %}
+
+{% block body %}
+<main class="main-panier">
+	<div class="container mt-5 mt-lg-5">
+		<div class="card card-panier">
+				<div class="row rowpanier">
+					<div class="col-md-8 cart">
+						<div class="title title-panier">
+							<div class="row rowpanier">
+								<div class="col col-panier">
+									<h4><b>Panier</b></h4>
+								</div>       
+						
+							</div>
+						</div>
+                        {% for item in Panier %}
+						<div class="row border-top">
+							<div class="row my-4 main align-items-center">
+								<div class="col">
+									<div class="row">{{ item['soin'].Titre }}</div>
+								</div>
+								<div class="col"><a href="#" class="border">{{ item['quantity'] }}</a></div>
+								<div class="col">{{ item['soin'].prix }} &euro;</div> 
+                                <div class="col"><a class="btn btn-secondary btn-danger" type="button" href="{{ path('delete_soin_panier' , { 'id':item['soin'].id}) }}"><i class="bi bi-cart-x-fill"> </i>Supprimer</a></div>
+							</div>  
+						</div>
+                        {% endfor %} 
+						<div class="back-to-shop">
+							<a href="{{path('app_home')}}">&leftarrow; <span class="text-muted">Continuez vos achats</span></a></div>
+					    </div>
+					<div class="col-md-4 summary">
+						<div>
+							<h5><b>Récapitulatif</b></h5>
+						</div>
+						<hr>
+						<div class="row rowpanier" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+							<div class="col col-panier">Prix totale</div>
+							<div class="col text-right col-panier">{{ totale_panier }} &euro;</div>
+						</div>
+						{% if app.user %}
+						<form action="/checkout" method="POST">
+						     <a href="{{path('reservation_new')}}"class="btn btn-primary">Réserver</a>
+						</form>
+						{% else %}
+						<button class="btn btnpanier">Veuillez vous connecter</button>
+						{% endif %}
+					</div>
+				</div>
+			
+		</div>
+	</div>
+</main>
+{% endblock %}

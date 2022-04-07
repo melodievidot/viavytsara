@@ -41,6 +41,11 @@ class Soin
      */
     private $categorie;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $temps;
+
 
 
     public function __construct()
@@ -134,6 +139,18 @@ class Soin
     public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getTemps(): ?string
+    {
+        return $this->temps;
+    }
+
+    public function setTemps(?string $temps): self
+    {
+        $this->temps = $temps;
 
         return $this;
     }

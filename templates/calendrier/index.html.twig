@@ -1,4 +1,4 @@
-{% extends 'basecalendar.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Calendrier index{% endblock %}
 
@@ -29,12 +29,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
     <a href="{{ path('calendrier_new') }}">Create new</a>
-    
 {% endblock %}

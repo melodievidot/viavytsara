@@ -20,19 +20,9 @@ class Reservation
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $quantite;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private $date_de_reservation;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $date_de_paiement;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -78,18 +68,6 @@ class Reservation
     }
 
 
-    public function getQuantite(): ?int
-    {
-        return $this->quantite;
-    }
-
-    public function setQuantite(int $quantite): self
-    {
-        $this->quantite = $quantite;
-
-        return $this;
-    }
-
     public function getDateDeReservation(): ?\DateTimeInterface
     {
         return $this->date_de_reservation;
@@ -102,19 +80,6 @@ class Reservation
         return $this;
     }
 
-    public function getDateDePaiement(): ?\DateTimeInterface
-    {
-        return $this->date_de_paiement;
-    }
-
-    public function setDateDePaiement(\DateTimeInterface $date_de_paiement): self
-    {
-        $this->date_de_paiement = $date_de_paiement;
-
-        return $this;
-    }
-
-
     public function getCommentaire(): ?string
     {
         return $this->commentaire;
@@ -125,14 +90,6 @@ class Reservation
         $this->commentaire = $commentaire;
 
         return $this;
-    }
-
-    /**
-     * @return Collection|soin[]
-     */
-    public function getSoin(): Collection
-    {
-        return $this->soin;
     }
 
     public function getAdresse(): ?Adresse
