@@ -13,36 +13,40 @@
 								<div class="col col-panier">
 									<h4><b>Panier</b></h4>
 								</div>       
-						
+								<div class="col align-self-center text-right text-muted col-panier">{{ nombre_article }} Article</div>
 							</div>
 						</div>
                         {% for item in Panier %}
 						<div class="row border-top">
 							<div class="row my-4 main align-items-center">
+								<div class="col-2"><img class="img-fluid" src="{{ asset(item['article'].image) }}"></div>
 								<div class="col">
-									<div class="row">{{ item['soin'].Titre }}</div>
+									<div class="row">{{ item['article'].titre }}</div>
 								</div>
 								<div class="col"><a href="#" class="border">{{ item['quantity'] }}</a></div>
-								<div class="col">{{ item['soin'].prix }} &euro;</div> 
-                                <div class="col"><a class="btn btn-secondary btn-danger" type="button" href="{{ path('delete_soin_panier' , { 'id':item['soin'].id}) }}"><i class="bi bi-cart-x-fill"> </i>Supprimer</a></div>
+								<div class="col">{{ item['article'].prix }} &euro;</div> 
+                                <div class="col"><i class="fa-solid fa-cart-shopping"></i><a class="btn btn-secondary btn-danger" type="button" href="{{ path('delete_article_panier' , { 'id':item['article'].id}) }}"><i class="bi bi-cart-x-fill"> </i>Supprimer</a></div>
 							</div>  
 						</div>
                         {% endfor %} 
 						<div class="back-to-shop">
-							<a href="{{path('app_home')}}">&leftarrow; <span class="text-muted">Continuez vos achats</span></a></div>
+							<a href="{{path('home')}}">&leftarrow; <span class="text-muted">Continuez vos achats</span></a></div>
 					    </div>
 					<div class="col-md-4 summary">
 						<div>
 							<h5><b>Récapitulatif</b></h5>
 						</div>
 						<hr>
+						<form id="formpanier">
+							<p>Code de réduction</p> <input class="inputform" id="code" placeholder="Entrez votre code">
+						</form>
 						<div class="row rowpanier" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
 							<div class="col col-panier">Prix totale</div>
 							<div class="col text-right col-panier">{{ totale_panier }} &euro;</div>
 						</div>
 						{% if app.user %}
 						<form action="/checkout" method="POST">
-						     <a href="{{path('reservation_new')}}"class="btn btn-primary">Réserver</a>
+						    <button type="submit" class="btn btnpanier">Payer</button>
 						</form>
 						{% else %}
 						<button class="btn btnpanier">Veuillez vous connecter</button>

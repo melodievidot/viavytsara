@@ -7,9 +7,226 @@ html {
 }
 
 body {
+    font-family: 'Open Sans', sans-serif;
     position: relative;
     min-height: 100%;
     padding-bottom: 5em;
+    background-image: url("../image/background/beaute12.jpg");
+}
+
+.main{
+    margin: 20px;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    display: flex;
+    flex-wrap:wrap;
+}
+
+  
+
+/***************/
+/*** HEADER  ***/
+/***************/
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+/***************/
+/***   MAIN  ***/
+/***************/
+
+/* PAGE A PROPOS DE NOUS */
+
+#spaceman {
+    border-radius: 999em;
+}
+
+/* PAGE PANIER */
+
+.title-panier {
+    margin-bottom: 5vh
+}
+
+.card-panier {
+    margin: auto;
+    max-width: 950px;
+    width: 90%;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1rem;
+    border: transparent
+}
+
+@media(max-width:767px) {
+    .card {
+        margin: 3vh auto
+    }
+}
+
+.cart {
+    background-color: #fff;
+    padding: 4vh 5vh;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem
+}
+
+@media(max-width:767px) {
+    .cart {
+        padding: 4vh;
+        border-bottom-left-radius: unset;
+        border-top-right-radius: 1rem
+    }
+}
+
+.summary {
+    background-color: #ddd;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 4vh;
+    color: #414141
+}
+
+@media(max-width:767px) {
+    .summary {
+        border-top-right-radius: unset;
+        border-bottom-left-radius: 1rem
+    }
+}
+
+.summary .col-2 {
+    padding: 0
+}
+
+.summary .col-10 {
+    padding: 0
+}
+
+.rowpanier {
+    margin: 0
+}
+
+.title b {
+    font-size: 1.5rem
+}
+
+.main-panier {
+    margin: 0;
+    padding: 2vh 0;
+    width: 100%
+}
+
+.col-2,
+.col-panier {
+    padding: 0 1vh
+}
+
+a {
+    padding: 0 1vh
+}
+
+.close {
+    margin-left: auto;
+    font-size: 0.7rem
+}
+
+.back-to-shop {
+    margin-top: 4.5rem
+}
+
+h5 {
+    margin-top: 4vh
+}
+
+hr {
+    margin-top: 1.25rem
+}
+
+#formpanier {
+    padding: 2vh 0
+}
+
+select {
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1.5vh 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247)
+}
+
+.inputform {
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247)
+}
+
+.inputform:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+.btnpanier {
+    background-color: #000;
+    border-color: #000;
+    color: white;
+    width: 100%;
+    font-size: 0.7rem;
+    margin-top: 4vh;
+    padding: 1vh;
+    border-radius: 0
+}
+
+.btnpanier:focus {
+    box-shadow: none;
+    outline: none;
+    box-shadow: none;
+    color: white;
+    -webkit-box-shadow: none;
+    -webkit-user-select: none;
+    transition: none
+}
+
+.btnpanier:hover {
+    color: white
+}
+
+a {
+    color: black
+}
+
+a {
+    text-decoration: none
+}
+
+.back-to-shop {
+    bottom: 0;
+    left: 0;
+}
+
+
+/* PAGE CONNEXION */
+
+.dropdown-logout {
+    background-color: rgb(223, 60, 60);
+
+}
+
+
+/* PAGE MON COMPTE*/
+
+.header-profil-user {
+    background-color: #1c6116;
+}
+
+.body-profil-user {
     background-image: url("../image/background/beaute12.jpg");
 }
 
@@ -22,3 +239,5 @@ footer {
     margin-top: 2em;
     margin-bottom: 0px;
 }
+
+

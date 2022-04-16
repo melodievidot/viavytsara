@@ -28,8 +28,8 @@ class ContactController extends AbstractController
             //On crée le mail
             $email = (new TemplatedEmail())
                 ->from($contact->get('email')->getData())
-                ->to('thewomenbeauty.fr')
-                ->subject('the women beauty contact')
+                ->to('viavytsara0@gmail.com')
+                ->subject('viavy tsara contact')
                 ->htmlTemplate('emails/contactindex.html.twig')
                 ->context([
                     'nom' => $contact->get('nom')->getData(),

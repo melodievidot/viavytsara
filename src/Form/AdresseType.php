@@ -12,11 +12,14 @@ class AdresseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Adresse1')
+            ->add('fullname')
+            ->add('adresse1')
             ->add('adresse2')
-            ->add('reservation')
-            ->add('user')
-        ;
+            ->add('complement')
+            ->add('ville')
+            ->add('code_postal')
+            ->add('pays')
+            ->add('telephone');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

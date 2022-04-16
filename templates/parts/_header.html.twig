@@ -1,7 +1,7 @@
 <header>
 
-	<nav class="navbar navbar-expand navbar-dark bg-dark container-fluid justify-content-end">
-		{% if app.user %}>
+	<nav class="navbar navbar-expand navbar-dark bg-success container-fluid justify-content-end">
+		{% if app.user %}
 
 			<a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" aria="false">{{ app.user.nom }}</a>
 			<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -30,13 +30,11 @@
 				<ul class="navbar-nav mb-2 mb-lg-0">
 					{% if app.user %}
 						<li class="nav-item1">
-							<a class="nav-link active text-dark" aria-current="page" href="{{path('app_home')}}">Accueil</a>
+							<a class="nav-link active text-dark" aria-current="page" href="{{path('home')}}">Accueil</a>
+							
 						</li>
 						<li class="nav-item1">
 							<a class="nav-link active text-dark" aria-current="page" href="{{path('moncompte')}}">Mon compte</a>
-						</li>
-						<li class="nav-item2">
-							<a class="nav-link active text-dark" aria-current="page" href="{{path('mesreservations')}}">Mes réservations</a>
 						</li>
 						<li class="nav-item2">
 							<a class="nav-link text-dark" href="{{path('panier')}}">
@@ -60,7 +58,7 @@
 
 			{% else %}
 				<li class="nav-item1">
-					<a class="nav-link active text-dark" aria-current="page" href="{{path('app_home')}}">Accueil</a>
+					<a class="nav-link active text-dark" aria-current="page" href="{{path('home')}}">Accueil</a>
 				</li>
 				<li class="nav-item2">
 					<a class="nav-link active text-dark" aria-current="page" href="{{ path('app_register')}}">
@@ -83,17 +81,15 @@
 											</button>
 											</form>#}
 	{% endif %}
-</div></div></nav>{% if is_granted('ROLE_ADMIN') %}<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffa806;">
+</div></div></nav>{% if is_granted('ROLE_ADMIN') %}<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fd6c9e ;">
 <div class="container-fluid">
-	<a class="navbar-brand text-danger" href="#">⚠️ Menu Administrateur ⚠️</a>
+	<a class="navbar-brand text-darktext-danger" href="#">⚠️ Menu Administrateur ⚠️</a>
 	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		<div class="navbar-nav">
-			<a class="nav-link" href="{{path('calendrier_index')}}">⚙️ Calendrier</a>
-		</div>
-		<a class="nav-link" href="{{path('categorie_index')}}">⚙️ Categorie</a>
-		<a class="nav-link" href="{{path('soin_index')}}">⚙️ Soin</a>
+ <a class="nav-link" href="{{path('users_index')}}">⚙️ Utilisateur</a>
+	<a class="nav-link" href="{{path('produit_boutique_index')}}">⚙️Produit</a>
+	    <a class="nav-link" href="{{path('app_commande_index')}}">⚙️ Commande</a>
+<a class="nav-link" href="#">⚙️Commentaire</a>
 	</div>
 </div></nav>{% endif %}</header>

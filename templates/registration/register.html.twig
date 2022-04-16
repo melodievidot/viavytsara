@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Créer votre compte{% endblock %}
 
 {% block body %}
     {% for flashError in app.flashes('verify_email_error') %}
@@ -63,7 +63,7 @@
 					</div>
 				</div>
 				<div class="mt-4 col-12">
-					<button type="submit" class="btn btn-primary" id="submitForm">Créer le compte</button>
+					<button type="submit" class="btn btn-success" id="submitForm">Créer le compte</button>
 				</div>
 				{{ form_end(registrationForm) }}
 				

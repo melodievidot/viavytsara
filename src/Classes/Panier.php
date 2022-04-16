@@ -3,7 +3,7 @@
 
 namespace App\Classes;
 
-use App\Repository\SoinRepository;
+use App\Repository\ProduitBoutiqueRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
@@ -12,16 +12,16 @@ class Panier {
     private $session;
     private $produitboutiquerepository;
 
-    public function __construct(SessionInterface $session, SoinRepository $soinrepository)
+    public function __construct(SessionInterface $session, ProduitBoutiqueRepository $produitboutiquerepository)
     {
         $this->session = $session;
-        $this->soinrepository = $soinrepository;
+        $this->produitboutiquerepository = $produitboutiquerepository;
     }
 
     /**
      * fonction qui ajoute un article au panier qui sera passé dans les paramètre de la function
      */
-    public function add_soin_panier($soin) {
+    public function add_article_panier($produitboutiquerepository) {
 
         // je créé un tableau
 
@@ -29,16 +29,16 @@ class Panier {
 
         // je teste le panier pour voir si la variable existe
 
-        if(!empty($panier[$soin])) {
+        if(!empty($panier[$produitboutiquerepository])) {
 
             // si elle existe je rajoute à la quantité 1
 
-            $panier[$soin] = $panier[$soin] + 1;
+            $panier[$produitboutiquerepository] = $panier[$produitboutiquerepository] + 1;
         }else{
 
             // sinon je créé la demande avec une valeur de 1
 
-            $panier[$soin] = 1;
+            $panier[$produitboutiquerepository] = 1;
         }
 
         // je renvoi à l'obget session les nouvelle valeur du panier
@@ -67,7 +67,7 @@ class Panier {
     /**
      * fonction qui supprime un article du panier par son id
      */
-    public function deleteSoinPanier($id) 
+    public function deleteArticlePanier($id) 
     {
         // je vais get le panier
         $panier=$this->getPanier();
@@ -134,10 +134,10 @@ class Panier {
 
         foreach( $panier as $id=>$quantity)
         {
-            $soin=$this->soinrepository->find($id);
+            $produitboutiquerepository=$this->produitboutiquerepository->find($id);
             
             $detail_panier[]=[
-                'soin'=>$soin,
+                'article'=>$produitboutiquerepository,
                 'quantity'=>$quantity
 
             ];
@@ -151,7 +151,7 @@ class Panier {
       * calculer le nombre d'articles dans le panier
       */
 
-    public function getNombreSoinPanier() {
+    public function getNombreArticlePanier() {
         $panier = $this->getDetailPanier();
 
         return count($panier);
@@ -167,7 +167,7 @@ class Panier {
         $totale = 0;
 
         foreach ($panier as $item) {
-            $prix = $item['soin']->getPrix();
+            $prix = $item['article']->getPrix();
             $totale = $totale + ($item['quantity'] * $prix);
         }
         return $totale;

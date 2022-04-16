@@ -3,10 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\AdresseRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=AdresseRepository::class)
@@ -21,9 +18,14 @@ class Adresse
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $Adresse1;
+    private $fullname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $adresse1;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -31,38 +33,60 @@ class Adresse
     private $adresse2;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $complement;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $ville;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $code_postal;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $pays;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $telephone;
+
+    /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="adresses")
      */
     private $user;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="adresse")
-     */
-    private $reservation;
-
-    public function __construct()
-    {
-        $this->reservation = new ArrayCollection();
-    }
-
-    public function __toString()
-    {
-        return $this->sname;
-    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getAdresse1(): ?string
+    public function getFullname(): ?string
     {
-        return $this->Adresse1;
+        return $this->fullname;
     }
 
-    public function setAdresse1(?string $Adresse1): self
+    public function setFullname(string $fullname): self
     {
-        $this->Adresse1 = $Adresse1;
+        $this->fullname = $fullname;
+
+        return $this;
+    }
+
+    public function getAdresse1(): ?string
+    {
+        return $this->adresse1;
+    }
+
+    public function setAdresse1(string $adresse1): self
+    {
+        $this->adresse1 = $adresse1;
 
         return $this;
     }
@@ -79,44 +103,74 @@ class Adresse
         return $this;
     }
 
-    public function getUser(): ?users
+    public function getComplement(): ?string
+    {
+        return $this->complement;
+    }
+
+    public function setComplement(?string $complement): self
+    {
+        $this->complement = $complement;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getCodePostal(): ?float
+    {
+        return $this->code_postal;
+    }
+
+    public function setCodePostal(float $code_postal): self
+    {
+        $this->code_postal = $code_postal;
+
+        return $this;
+    }
+
+    public function getPays(): ?string
+    {
+        return $this->pays;
+    }
+
+    public function setPays(string $pays): self
+    {
+        $this->pays = $pays;
+
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(string $telephone): self
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getUser(): ?Users
     {
         return $this->user;
     }
 
-    public function setUser(?users $user): self
+    public function setUser(?Users $user): self
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|reservation[]
-     */
-    public function getReservation(): Collection
-    {
-        return $this->reservation;
-    }
-
-    public function addReservation(reservation $reservation): self
-    {
-        if (!$this->reservation->contains($reservation)) {
-            $this->reservation[] = $reservation;
-            $reservation->setAdresse($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReservation(reservation $reservation): self
-    {
-        if ($this->reservation->removeElement($reservation)) {
-            // set the owning side to null (unless already changed)
-            if ($reservation->getAdresse() === $this) {
-                $reservation->setAdresse(null);
-            }
-        }
 
         return $this;
     }

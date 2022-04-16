@@ -1,31 +1,44 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block title %}Viavytsara!
-
+{% block header %}
+	{% include "parts/_header.html.twig" %}
 {% endblock %}
 
 {% block body %}
 	<main>
-			<div class="mt-3 pt-3">
-				<h1 class="d-flex justify-content-center">
-					꧁✿🌸╭⊱𝓥𝓲𝓪𝓿𝔂 𝓣𝓼𝓪𝓻𝓪 ⊱╮🌸✿꧂
-				</h1>
-				<h3 class="d-flex justify-content-center"> " 𝑉𝑜𝑡𝑟𝑒 𝑝𝑎𝑟𝑒𝑛𝑡ℎ𝑒̀𝑠𝑒 𝐵𝑖𝑒𝑛-𝑒̂𝑡𝑟𝑒" </h3>
-			</div>
-			<div class="container mt-5">
-			<div class="row g-4 g-lg-4">
-				{% for categorie in categories %}
-					<div class="col-12 col-sm-4 p-3">
-						<div class="card h-100" style="width: 90%;">
-							<img src="{{ asset(categorie.image)}}" class="card-img-top" alt="{{ categorie.ImageAlt }}">
-                    <div class="card-body">
-                    <p class="card-text">{{ categorie.description }}</p>
-                    <a href="{{ path('categorie_page',{'id':categorie.id}) }}" class="btn btn-primary d-flex justify-content-center">{{ categorie.titre }}</a>
+		<div class="container mt-5">
+			<div class="card mb-3">
+				<div class="card-body">
+					<h1 class="d-flex justify-content-center">꧁✿🌸╭⊱𝓥𝓲𝓪𝓿𝔂 𝓣𝓼𝓪𝓻𝓪 ⊱╮🌸✿꧂</h1>
+					<h3 class="d-flex justify-content-center">
+						" 𝑉𝑜𝑡𝑟𝑒 𝑝𝑎𝑟𝑒𝑛𝑡ℎ𝑒̀𝑠𝑒 𝐵𝑖𝑒𝑛-𝑒̂𝑡𝑟𝑒"
+					</h3>
+					<p>
+				    Formulé sans huile de palme et sans dioxyde de titane, enrichi à la Brède Mafane et Moringa. Le savon Viavytsara s'utilise sur le corps et sur le visage.
+						A vos click, vous êtes prêts? shoppez! c'est simple, tout y est dans la page! Bon shoping!</p>
+					</p>
+					<div class="row mt-4 g-4 g-lg-5">
+						{% for produit_boutique in produit_boutiques %}
+							<div class="col-8 col-md-6 col-lg-3">
+								<div class="card h-100" style="width: 100%;">
+									<img src="{{ asset(produit_boutique.image)}}" class="card-img-top" alt="{{ produit_boutique.imageAlt }} " width="400  height=" 341" >
+					<h5 class="d-flex justify-content-center">{{ produit_boutique.titre }} </h5>
+<p> {{produit_boutique.description }}</p> <i class="fa-solid fa-heart"></i>
+					<ul>
+                    <li> <small> composition : {{ produit_boutique.composition }} </small> </li>
+                    <li> <small>poids :100g </small></li>
+                    </ul>
+					<div class="card-body">
+                    <h5 class="card-title pricing-card-title">{{ produit_boutique.prix}}€</h5>
+					<div>
+	<a href="{{path('add_article_panier', {'id': produit_boutique.id})}}" class="align-self-end btn btn-lg btn-block btn btn-success" style="magin-top: auto"><i class="fas fa-shopping-cart"></i>Ajouter Panier</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					    {% endfor %}
+                    </div>
             </div>
-            </div>
-					</div>
-				{% endfor %}
-			</div>
 		</div>
-</main>
-{% endblock %}
+	</main>
+	{% endblock %}

@@ -5,9 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\SoinRepository;
-use App\Entity\Soin;
 use App\Classes\Panier;
+use App\Entity\ProduitBoutique;
 
 class PanierController extends AbstractController
 {
@@ -29,18 +28,18 @@ class PanierController extends AbstractController
 
             // je get le panier par la méthode getPanier de l'obget $panier
             'Panier' => $panier->getDetailPanier(),
-            'nombre_article' => $panier->getNombreSoinPanier(),
+            'nombre_article' => $panier->getNombreArticlePanier(),
             'totale_panier' => $panier->getTotalePanier(),
         ]);
     }
 
     /**
-     * @Route("/ajouter-panier/{id}", name="add_soin_panier")
+     * @Route("/ajouter-panier/{id}", name="add_article_panier")
      */
-    public function addSoinPanier($id, Panier $panier, Soin $soin): Response
+    public function addArticlePanier($id, Panier $panier, ProduitBoutique $produitBoutique): Response
     {
         // j'appel notre méthode de notre class panier (add_article_panier)
-        $panier->add_soin_panier($id);
+        $panier->add_article_panier($id);
 
         return $this->redirectToRoute('panier');
     }
@@ -59,13 +58,13 @@ class PanierController extends AbstractController
     }
 
     /**
-     * @Route("/supprimer-panier/{id}", name="delete_soin_panier")
+     * @Route("/supprimer-panier/{id}", name="delete_article_panier")
      */
-    public function deleteSoinPanier($id, Panier $panier, Soin $soin): Response
+    public function deleteArticlePanier($id, Panier $panier): Response
     {
         // j'appel la function deletePanier de notre classe panier qui suprime tout les articles
 
-        $panier->deleteSoinPanier($id);
+        $panier->deleteArticlePanier($id);
 
         // et je redirige vers la vue du panier
         return $this->redirectToRoute('panier');

@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+	{% for produit_boutique in produit_boutiques %}
+    <div class="row">
+        <div class="col-lg-10 mx-auto col-12 text-center mb-3">
+            <h1 class="mt-0 text-dark">{{produit_boutique.titre}}</h1>
+<div class="col-12 mt-4">
+            <hr class="accent my-5">
+        </div>
+			<h4>Description</h4>
+
+							<p>
+								<strong>{{ produit_boutique.description}}</p>
+							</p>
+							<p></p>
+							<p>
+							<h4>Conseil d'utilisation</h4>
+								<strong>{{ produit_boutique.utilisation}}</p>
+		
+							</p>
+							<p></p>
+							<p>
+								<h4>Composition</h4>
+								<strong>{{ produit_boutique.composition}}</p>
+					
+
+							</p>
+                <span class="float-right font-weight-bold">{{produit_boutique.prix}} €</span>
+				<div>
+			<a href="{{path('add_article_panier', {'id': produit_boutique.id})}}"class="btn btn-primary">Ajouter Panier</a> 
+			<a href="{{path('app_comment_index', {'id': produit_boutique.id})}}"class="btn btn-primary">Ajouter Avis</a> 
+				</div>
+				
+			</div>
+        </div>
+		
+						</div>
+				</div>
+			</div>
+	{% endfor %}
+</main>
+{% endblock %}

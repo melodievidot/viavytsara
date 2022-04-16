@@ -1,36 +1,43 @@
 <?php
 
 namespace App\Controller;
-
-use App\Entity\Categorie;
-use App\Entity\Reservation;
-use App\Entity\Adresse;
-use App\Entity\Soin;
-use App\Entity\Users;
+use App\Entity\Comment;
+use App\Entity\ProduitBoutique;
 use App\Form\EditProfileType;
-use App\Repository\CategorieRepository;
-use App\Repository\ReservationRepository;
-use App\Repository\AdresseRepository;
-use App\Repository\SoinRepository;
+use App\Repository\ProduitBoutiqueRepository;
+use App\Repository\CommandeRepository;
+use App\Repository\CommentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 class MainController extends AbstractController
 {
+
     /**
-     * @Route("/", name="app_home")
+     * @Route("/", name="home")
      */
-    public function index(CategorieRepository $categorieRepository): Response
+    public function home(ProduitBoutiqueRepository $produitBoutiqueRepository): Response
     {
         return $this->render('main/index.html.twig', [
-            'categories' =>  $categorieRepository->findAll(),
+            'produit_boutiques' => $produitBoutiqueRepository->findAll(),
         ]);
     }
+
+
+    /**
+     * @Route("/boutique", name="boutique")
+     */
+    public function boutique(ProduitboutiqueRepository $ProduitboutiqueRepository): Response
+    {
+        return $this->render('pages/ficheproduit.html.twig', [
+            'produit_boutiques' => $ProduitboutiqueRepository->findAll(),
+        ]);
+    }
+
 
     /**
      * @Route("/info", name="aproposdenous")
@@ -41,40 +48,28 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/reservation", name="mesreservations")
-     */
-    public function reservation(): Response
-    {
-        return $this->render('pages/mesreservations.html.twig');
-    }
-
-    /**
-     * @Route("/categorie/{id}", name="categorie_page")
-     */
-    public function PrestationsPage(Categorie $categorie, soinRepository $soinRepository): Response
-    {
-        return $this->render('pages/prestations.html.twig', [
-            'categorie' => $categorie,
-            'soins' => $soinRepository->findBy([
-                'categorie' => $categorie
-            ]),
-        ]);
-    }
-
-    /**
      * @Route("/moncompte", name="moncompte")
      */
-    public function moncompte(ReservationRepository $reservationRepository): Response
-
+    public function moncompte(CommandeRepository $commandeRepository): Response
     {
-
         $user = $this->getUser();
 
         return $this->render('pages/moncompte.html.twig', [
-            'reservations' => $reservationRepository->find($user),
+            'commande' => $commandeRepository->find($user),
         ]);
     }
 
+
+  /**
+      * @Route("/produit/{id}", name="produit_page")
+      */
+      public function ProduitProduitPage(ProduitBoutiqueRepository $ProduitboutiqueRepository): Response
+      {
+          return $this->render('pages/ficheproduit.html.twig', [
+            'produit_boutiques' => $ProduitboutiqueRepository->findAll(),
+        ]);
+    }
+          
 
     /**
      * @Route("/moncompte/modifier", name="modifiermoncompte")
@@ -103,31 +98,12 @@ class MainController extends AbstractController
         ]);
     }
 
-
-/**
-     * @Route("/soin/{id}", name="soin_page")
-     */
-    public function soinPage(Categorie $categorie, Soin $soin): Response
-    {
-        return $this->render('pages/soin/soin.html.twig', [
-            'categorie' => $categorie,
-            'soin' => $soin
-        ]);
-    }
     /**
      * @Route("/CGU", name="CGU")
      */
     public function mentionscgu(): Response
     {
         return $this->render('pages/cgu.html.twig');
-    }
-
-/**
-     * @Route("/categorie/{id}", name="prestation")
-     */
-    public function Prestations(): Response
-    {
-        return $this->render('pages/prestations.html.twig');
     }
 
     /**
@@ -155,9 +131,9 @@ class MainController extends AbstractController
         return $this->render('pages/modifiermotdepasse.html.twig');
     }
 
-/**
-     * @Route("/politiquedeconfidentialite", name="conf")
-     */
+    /**
+         * @Route("/politiquedeconfidentialite", name="conf")
+         */
     public function conf(): Response
     {
         return $this->render('pages/conf.html.twig');
