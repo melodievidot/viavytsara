@@ -28,6 +28,8 @@ body {
     flex-wrap:wrap;
 }
 
+
+
 /***************/
 /***   MAIN  ***/
 /***************/
@@ -205,20 +207,17 @@ a {
 /* PAGE CONNEXION */
 
 .dropdown-logout {
-    background-color: rgb(223, 60, 60);
+    background-color: #198754;
 
 }
 
 
 /* PAGE MON COMPTE*/
 
-.header-profil-user {
-    background-color: #1c6116;
+.header-profil {
+    background-color: #198754;
 }
 
-.body-profil-user {
-    background-image: url("../image/background/beaute12.jpg");
-}
 
 
 footer {

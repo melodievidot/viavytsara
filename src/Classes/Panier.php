@@ -21,7 +21,7 @@ class Panier {
     /**
      * fonction qui ajoute un article au panier qui sera passé dans les paramètre de la function
      */
-    public function add_article_panier($produitboutiquerepository) {
+    public function add_article_panier($article) {
 
         // je créé un tableau
 
@@ -29,16 +29,16 @@ class Panier {
 
         // je teste le panier pour voir si la variable existe
 
-        if(!empty($panier[$produitboutiquerepository])) {
+        if(!empty($panier[$article])) {
 
             // si elle existe je rajoute à la quantité 1
 
-            $panier[$produitboutiquerepository] = $panier[$produitboutiquerepository] + 1;
+            $panier[$article] = $panier[$article] + 1;
         }else{
 
             // sinon je créé la demande avec une valeur de 1
 
-            $panier[$produitboutiquerepository] = 1;
+            $panier[$article] = 1;
         }
 
         // je renvoi à l'obget session les nouvelle valeur du panier
@@ -134,10 +134,10 @@ class Panier {
 
         foreach( $panier as $id=>$quantity)
         {
-            $produitboutiquerepository=$this->produitboutiquerepository->find($id);
+            $article=$this->produitboutiquerepository->find($id);
             
             $detail_panier[]=[
-                'article'=>$produitboutiquerepository,
+                'article'=>$article,
                 'quantity'=>$quantity
 
             ];

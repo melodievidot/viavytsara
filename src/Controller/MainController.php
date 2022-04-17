@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\Comment;
 use App\Entity\ProduitBoutique;
 use App\Form\EditProfileType;
 use App\Repository\ProduitBoutiqueRepository;
 use App\Repository\CommandeRepository;
-use App\Repository\CommentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,16 +26,6 @@ class MainController extends AbstractController
     }
 
 
-    /**
-     * @Route("/boutique", name="boutique")
-     */
-    public function boutique(ProduitboutiqueRepository $ProduitboutiqueRepository): Response
-    {
-        return $this->render('pages/ficheproduit.html.twig', [
-            'produit_boutiques' => $ProduitboutiqueRepository->findAll(),
-        ]);
-    }
-
 
     /**
      * @Route("/info", name="aproposdenous")
@@ -45,6 +33,15 @@ class MainController extends AbstractController
     public function aproposdenous(): Response
     {
         return $this->render('pages/aproposdenous.html.twig');
+    }
+
+
+    /**
+     * @Route("/faq", name="faq")
+     */
+    public function faq(): Response
+    {
+        return $this->render('pages/faq.html.twig');
     }
 
     /**
@@ -56,17 +53,6 @@ class MainController extends AbstractController
 
         return $this->render('pages/moncompte.html.twig', [
             'commande' => $commandeRepository->find($user),
-        ]);
-    }
-
-
-  /**
-      * @Route("/produit/{id}", name="produit_page")
-      */
-      public function ProduitProduitPage(ProduitBoutiqueRepository $ProduitboutiqueRepository): Response
-      {
-          return $this->render('pages/ficheproduit.html.twig', [
-            'produit_boutiques' => $ProduitboutiqueRepository->findAll(),
         ]);
     }
           

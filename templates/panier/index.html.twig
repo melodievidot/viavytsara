@@ -25,10 +25,12 @@
 								</div>
 								<div class="col"><a href="#" class="border">{{ item['quantity'] }}</a></div>
 								<div class="col">{{ item['article'].prix }} &euro;</div> 
-                                <div class="col"><i class="fa-solid fa-cart-shopping"></i><a class="btn btn-secondary btn-danger" type="button" href="{{ path('delete_article_panier' , { 'id':item['article'].id}) }}"><i class="bi bi-cart-x-fill"> </i>Supprimer</a></div>
+                                <div class="col"><i class="fa-solid fa-cart-shopping"></i><a class="btn btn-primary" type="button" href="{{ path('add_article_panier' , { 'id':item['article'].id}) }}"><i class="bi bi-cart-x-fill"> </i>Ajouter</a></div>
+								 <div class="col"><i class="fa-solid fa-cart-shopping"></i><a class="btn btn-secondary btn-danger" type="button" href="{{ path('retire_une_quantite' , { 'id':item['article'].id}) }}"><i class="bi bi-cart-x-fill"> </i>Supprimer</a></div>
 							</div>  
 						</div>
                         {% endfor %} 
+							<div class="col"><i class="fa-solid fa-cart-shopping"></i><a class="btn btn-secondary btn-danger" type="button" href="{{ path('delete_panier')}}"><i class="bi bi-cart-x-fill"> </i>Supprimer tout </a></div>
 						<div class="back-to-shop">
 							<a href="{{path('home')}}">&leftarrow; <span class="text-muted">Continuez vos achats</span></a></div>
 					    </div>

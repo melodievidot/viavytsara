@@ -13,17 +13,18 @@
 					<h3 class="d-flex justify-content-center">
 						" 𝑉𝑜𝑡𝑟𝑒 𝑝𝑎𝑟𝑒𝑛𝑡ℎ𝑒̀𝑠𝑒 𝐵𝑖𝑒𝑛-𝑒̂𝑡𝑟𝑒"
 					</h3>
-					<p>
-				    Formulé sans huile de palme et sans dioxyde de titane, enrichi à la Brède Mafane et Moringa. Le savon Viavytsara s'utilise sur le corps et sur le visage.
-						A vos click, vous êtes prêts? shoppez! c'est simple, tout y est dans la page! Bon shoping!</p>
-					</p>
+					
+			<div class="card-header header-profil">
+			<p class="modal-title text-white text-center">"Formulé sans huile de palme et sans dioxyde de titane, les savons de chez Viavytsara s'utilisent sur le corps et sur le visage."</p>
+			</div>
+					
 					<div class="row mt-4 g-4 g-lg-5">
 						{% for produit_boutique in produit_boutiques %}
-							<div class="col-8 col-md-6 col-lg-3">
+							<div class="col-8 col-md-4 col-lg-4">
 								<div class="card h-100" style="width: 100%;">
 									<img src="{{ asset(produit_boutique.image)}}" class="card-img-top" alt="{{ produit_boutique.imageAlt }} " width="400  height=" 341" >
-					<h5 class="d-flex justify-content-center">{{ produit_boutique.titre }} </h5>
-<p> {{produit_boutique.description }}</p> <i class="fa-solid fa-heart"></i>
+					<h5 style="color: green" class="d-flex justify-content-center">{{ produit_boutique.titre }} </h5>
+					<p>{{produit_boutique.description }}</p>
 					<ul>
                     <li> <small> composition : {{ produit_boutique.composition }} </small> </li>
                     <li> <small>poids :100g </small></li>
