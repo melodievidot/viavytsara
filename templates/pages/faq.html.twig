@@ -1,7 +1,9 @@
 {% extends "base.html.twig" %}
 
 {% block title %}QUESTIONS FREQUENTES{% endblock %}
-{% block stylesheet %}
+{% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/feuille.css") }}">
 {% endblock %}
 
 {% block body %}
@@ -62,11 +64,12 @@
                     <p class="mt-3 card-text"> Pour toutes autres questions, veuillez nous contacter : <a href="{{path('contact')}}">Contactez nous</a></p>
                     </details>
 						</div>
-				</li>
-
                 </div>
 				</div>
 			</div>
 		</div>
+        	</div>
+            </div>
+            </div>
 	</main>
 {% endblock %}

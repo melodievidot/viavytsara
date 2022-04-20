@@ -46,13 +46,9 @@
 							<div class="col col-panier">Prix totale</div>
 							<div class="col text-right col-panier">{{ totale_panier }} &euro;</div>
 						</div>
-						{% if app.user %}
 						<form action="/checkout" method="POST">
 						    <button type="submit" class="btn btnpanier">Payer</button>
 						</form>
-						{% else %}
-						<button class="btn btnpanier">Veuillez vous connecter</button>
-						{% endif %}
 					</div>
 				</div>
 			

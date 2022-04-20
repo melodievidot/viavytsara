@@ -2,29 +2,25 @@
 
 {% block title %}À propos de nous{% endblock %}
 
+{% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/feuille.css")}}">
+{% endblock %}
+
 {% block body %}
+
 <main>
         <div class="container mt-5 mt-lg-5">
-        <div class="card card-cgu col-12">
-					<div class="card-header header-profil">
-						<h3 class="modal-title text-center">Bienvenue chez 𝓥𝓲𝓪𝓿𝔂 𝓣𝓼𝓪𝓻𝓪</h3>
-					</div>
-        
-<div class="clearfix">
-  <img src="image\soap3.jpg" class="col-md-4 float-md-end mb-3 ms-md-3"
-<div class="card-body">
-<h4 class="mt-2 card-text fw-bold text-center text-success"> QUI SOMMES-NOUS? </h4>
-  <p class="card-text">
-   Depuis 2 ans maintenant, nous fabriquons des savons artisanaux inspirés de la Nature. Saponifiés à froid et élaborés avec des Huiles Végétales et Essentielles selectionnées de Madagascar.
-Nous travaillons essentiellement avec les 3 Huiles suivant : le moringa, le brède mafane, le coco. Ces huiles proviennent d'une filière éthique, responsable et durable à Madagscar. 
- </p>
-	<p class="card-text">
-	Nos savons vous livrent tous les secrets beauté de la grande île, d'où le nm "VIAVYTSARA" qui signifie "jolie femme" (Viavy=Femme, Tsara= Jolie). Rien de plus agréable et plus doux qu'un savon pour profiter de toutes les propriétés des huiles végétales.
-  </p>
-          <img src="{{asset('image/background/countryside-gf43508735_1920.jpg')}}" class="img-fluid mt-4 col-12 col-lg-4" alt="paysage">
-          </div>
-        		</div>
-			</div>
-		</div>
-	</main>
+            <h3 class="fw-bold">Bienvenue chez 𝓥𝓲𝓪𝓿𝔂 𝓣𝓼𝓪𝓻𝓪</h3><br>
+            <p class="fw-bold">Depuis 2 ans maintenant, nous fabriquons des savons artisanaux inspirés de la Nature. Saponifiés à froid et élaborés avec des Huiles Végétales et Essentielles selectionnées de Madagascar.
+Nous travaillons essentiellement avec les 3 Huiles suivant : le moringa, le brède mafane, le coco. Ces huiles proviennent d'une filière éthique, responsable et durable à Madagscar. </p>
+             <p class="mt-5 col-12 col-lg-8 fw-bold">Nos savons vous livrent tous les secrets beauté de la grande île, d'où le nm "VIAVYTSARA" qui signifie "jolie femme" (Viavy=Femme, Tsara= Jolie). Rien de plus agréable et plus doux qu'un savon pour profiter de toutes les propriétés des huiles végétales. !<br><br>
+			 <div class="mt-1 row lg-5">
+               <div class="clearfix">
+  <img src="image\soap3.jpg" class="col-md-4 float-md-end mb-3 ms-md-3">
+</div>
+        </div>
+		  </div>
+</main>
 {% endblock %}
+

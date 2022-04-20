@@ -1,22 +1,39 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Nouvelle Adresse{% endblock %}
+{% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/feuille.css")}}">
+{% endblock %}
 
 {% block body %}
 <main>
-		<div class="container mt-5 mt-lg-5">
-			<div class="mt-3 pt-2">
-				<h1 class="text-center text">Votre nouvelle Adresse</h2>
-
-				<div class="col-12 col-lg-6">
-
-                 {{ include('adresse/_form.html.twig')}}
-
-                 </div>
-
-                    <a href="{{ path('moncompte') }}">retour</a>
+	<div class="container mt-5 mt-lg-5">
+<h3 class="text-center"> Adresse </h3>
+<div>
+<div class="card card-profil-user">
+<div class="card-header header-profil-user">
+<h4 class="modal-title text-center"> Veuillez ajouter votre adresse</h4>
+</div>
+    {{ form_start(form) }}
+    <div class="row">
+    <div class="col-md-5">{{ form_row(form.fullname)}} </div>
+    <div class="col-md-5">{{ form_row(form.adresse1)}} </div>
+    <div class="col-md-5">{{ form_row(form.adresse2)}} </div>
+    <div class="col-md-4">{{ form_row(form.complement)}} </div>
+    <div class="col-md-4">{{ form_row(form.code_postal)}} </div>
+     <div class="col-md-4">{{ form_row(form.ville)}} </div>
+    <div class="col-md-4">{{ form_row(form.pays)}} </div>
+    <div class="col-md-4">{{ form_row(form.telephone)}} </div>
+    
+</div>
+<div class="mt-4 col-12">
+{{ include('adresse/_form.html.twig', {'button_label': 'creer'}) }}
+<a href="{{ path('moncompte') }}" class="btn btn-success">Retour à la liste</a>
+</div>
+ {{ form_end(form) }}
 
     </div>
-    </div>
-    </main>
+</div>
+ </main>
 {% endblock %}

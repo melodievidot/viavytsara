@@ -1,6 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Adresse index{% endblock %}
+{% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/feuille.css") }}">
+{% endblock %}
+
 
 {% block body %}
 
@@ -40,11 +45,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="10">no records found</td>
+                <td colspan="10">Aucun enregistrement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_adresse_new') }}">Ajouter une nouvelle adresse</a>
+    <a href="{{ path('app_adresse_new') }}" class="btn btn-success">Ajouter une nouvelle adresse</a>
 {% endblock %}

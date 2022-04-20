@@ -1,4 +1,8 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/feuille.css") }}">
+{% endblock %}
 
 {% block title %}ProduitBoutique{% endblock %}
 

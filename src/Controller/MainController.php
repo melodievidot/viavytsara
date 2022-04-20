@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 use App\Entity\ProduitBoutique;
+use App\Entity\Adresse;
 use App\Form\EditProfileType;
 use App\Repository\ProduitBoutiqueRepository;
+use App\Repository\AdresseRepository;
 use App\Repository\CommandeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -83,6 +85,17 @@ class MainController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+ /**
+     * @Route("/coordonnees", name="coordonnees")
+     */
+    public function adresse(AdresseRepository $AdresseRepository): Response
+    {
+        return $this->render('pages/coordonnees.html.twig', [
+            'adresse' => $AdresseRepository->findAll(),
+        ]);
+    }
+
 
     /**
      * @Route("/CGU", name="CGU")

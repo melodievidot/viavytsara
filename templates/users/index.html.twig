@@ -1,7 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Liste des Utilisateurs{% endblock %}
-
+{% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/feuille.css") }}">
+{% endblock %}
 {% block body %}
     <h1 class="my-5 text-center">Liste des Utilisateurs</h1>
 
@@ -31,13 +34,13 @@
                 <td>{{ user.prenom }}</td>
                 <td>{{ user.telephone }}</td>
                 <td>
-                    <a href="{{ path('users_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('users_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('users_show', {'id': user.id}) }}">consulter</a>
+                    <a href="{{ path('users_edit', {'id': user.id}) }}">modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="9">no records found</td>
+                <td colspan="9">Il n'y a pas d'utilisateur inscrit</td>
             </tr>
         {% endfor %}
         </tbody>

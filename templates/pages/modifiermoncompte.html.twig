@@ -1,7 +1,10 @@
 {% extends "base.html.twig" %}
 
 {% block title %}Modification du profil de {{ app.user.prenom}} {{ app.user.nom}}{% endblock %}
-
+{% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/feuille.css")}}">
+{% endblock %}
 {% block body %}
 	<main>
 		<div class="container mt-5 mt-lg-5">

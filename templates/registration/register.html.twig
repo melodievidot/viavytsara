@@ -2,20 +2,22 @@
 
 {% block title %}Créer votre compte{% endblock %}
 
+{% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("css/feuille.css")}}">
+{% endblock %}
+
 {% block body %}
+<main>
+	<main>
+		<div class="container mt-5">
+			<h3 class="text-center">Votre bien-être est à portée de main, inscrivez-vous!</h3>
+			<p class="text-center">Remplissez le formulaire ci-dessous pour accéder aux ventes privées et d'autres avantages</p><br>
+			<div class="dropdown-divider"></div>
+			<div class="row">
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
-
-    	<main>
-		<div class="container mt-5 mt-lg-5">
-
-			<div class="card-header header-profil">
-			<h3 class="modal-title text-center"> Votre Beauté est à porter de main, inscrivez-vous!</h3>
-			</div>
-			<br>
-			<p class="text-center">Remplissez le formulaire ci-dessous.</p><br>
-			<div class="dropdown-divider"></div>
 			<div class="row">
 				{{ form_start(registrationForm, { attr: { class: 'p-3 col-12 col-lg-9 was-validated' } }) }}
 				{% for flashError in app.flashes('verify_email_error') %}
@@ -69,6 +71,9 @@
 					<button type="submit" class="btn btn-success" id="submitForm">Créer le compte</button>
 				</div>
 				{{ form_end(registrationForm) }}
+			
+
+				</div>
 				
 			</div>
 			<div class="dropdown-divider"></div>

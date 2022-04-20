@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdresseController extends AbstractController
 {
     /**
-     * @Route("/", name="app_adresse_index", methods={"GET"})
+     * @Route("/liste-adresse", name="app_adresse_index")
      */
     public function index(AdresseRepository $adresseRepository): Response
     {
@@ -28,7 +28,7 @@ class AdresseController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="app_adresse_new", methods={"GET", "POST"})
+     * @Route("/ajouter-adresse", name="app_adresse_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager, AdresseRepository $adresseRepository): Response
     {
@@ -63,7 +63,7 @@ class AdresseController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_adresse_edit", methods={"GET", "POST"})
+     * @Route("/{id}/modifier", name="app_adresse_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Adresse $adresse, AdresseRepository $adresseRepository, EntityManagerInterface $entityManager): Response
     {
@@ -77,9 +77,9 @@ class AdresseController extends AbstractController
             return $this->redirectToRoute('moncompte', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('adresse/edit.html.twig', [
+        return $this->render('adresse/edit.html.twig', [
             'adresse' => $adresse,
-            'form' => $form,
+            'form' => $form->createView()
         ]);
     }
 
@@ -92,12 +92,8 @@ class AdresseController extends AbstractController
             $adresseRepository->remove($adresse);
             $entityManager->flush();
             $this->addFlash('adresse_message', 'Votre adresse a bien été supprimé');
-            return $this->redirectToRoute('moncompte', [], Response::HTTP_SEE_OTHER);
         }
         
-        return $this->renderForm('adresse/delete.html.twig', [
-        'adresse' => $adresse,
-        'form' => $form,
-    ]);
+        return $this->redirectToRoute('moncompte');
     }
 }
